@@ -2,7 +2,8 @@ pythonDicomConverter
 ============
 A simple DICOM converter to 3D volume data.
 
-<img src='mainview.png' align='right' width='270'>
+<img src='https://raw.githubusercontent.com/ChenglongWang/pythonDicomConverter/master/mainview.PNG' align='right' width='270'>
+![manview](mainview.png)
 pythonDicomConverter is an simple open source DICOM file converter to 3D volume data (Raw and Nifti format). It enables a easy and quick converting by pre-defined rules.
 
 pythonDicomConverter is separated from [dicompyler](https://github.com/bastula/dicompyler) which is designed for radiation therapy research. Same as dicompyler, pythonDicomConverter is a wxPython-based application written in Python.
