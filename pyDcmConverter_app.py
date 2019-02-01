@@ -9,4 +9,4 @@
 
 import pyDcmConverter.dicomgui
 
-pyDcmConverter.dicomgui.start()
+pyDcmConverter.dicomgui.main()

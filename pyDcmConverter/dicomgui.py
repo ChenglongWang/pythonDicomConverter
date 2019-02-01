@@ -11,12 +11,10 @@
 #
 # It's assumed that the reference (prescription) dose is in cGy.
 
-import hashlib, os, threading, functools, json
-import logging
+import hashlib, os, threading, functools, json, logging
 logger = logging.getLogger('DcmConverter')
 import wx
 from wx.xrc import *
-from wx.lib.pubsub import pub
 import numpy as np
 from dicompylercore import dicomparser
 from pyDcmConverter import guiutil, util
@@ -32,11 +30,7 @@ class DcmConverterApp(wx.App):
         dlgDicomImporter.Init(self.res)
 
         # Show the dialog and return the result
-        if dlgDicomImporter.ShowModal() == wx.ID_OK:
-            value = dlgDicomImporter.GetPatient()
-            pub.sendMessage('patient.updated.raw_data', msg=value)
-        else:
-            value = {}
+        ret = dlgDicomImporter.ShowModal()
         
         # Save configure
         conf = {}
@@ -64,7 +58,6 @@ class DicomImporterDialog(wx.Dialog):
 
     def __init__(self):
         wx.Dialog.__init__(self)
-        #self.path = os.path.expanduser('~')
 
     def Init(self, res):
         """Method called after the panel has been initialized."""
@@ -166,10 +159,6 @@ class DicomImporterDialog(wx.Dialog):
         # Initialize the patients dictionary
         self.patients = {}
 
-        # Initialize the import location via pubsub
-        pub.subscribe(self.OnImportPrefsChange, 'general.dicom')
-        pub.sendMessage('preferences.requested.values', msg='general.dicom')
-
         # Search subfolders by default
         self.import_search_subfolders = True
 
@@ -183,18 +172,6 @@ class DicomImporterDialog(wx.Dialog):
 
         # Start the directory search as soon as the panel loads
         #self.OnDirectorySearch()
-
-    def OnImportPrefsChange(self, topic, msg):
-        """When the import preferences change, update the values."""
-        topic = topic.split('.')
-        if (topic[1] == 'import_location'):
-            self.path = str(msg)
-            self.txtDicomImport.SetValue(self.path)
-        elif (topic[1] == 'import_location_setting'):
-            self.import_location_setting = msg
-        elif (topic[1] == 'import_search_subfolders'):
-            self.import_search_subfolders = msg
-            self.checkSearchSubfolders.SetValue(msg)
 
     def OnRescan(self, evt):
         self.OnDirectorySearch()
@@ -1084,32 +1061,6 @@ class DicomImporterDialog(wx.Dialog):
         """Return the patient data from the DICOM importer dialog."""
 
         return self.patient
-
-    def OnOK(self, evt):
-        """Return the patient data if the patient is selected or the button
-            is pressed."""
-        item = self.tcPatients.GetSelection()
-        if self.tcPatients.GetItemData(item):
-            # Since we have decided to use this location to import from,
-            # update the location in the preferences for the next session
-            # if the 'import_location_setting' is "Remember Last Used"
-            if (self.import_location_setting == "Remember Last Used"):
-                pub.sendMessage('preferences.updated.value',
-                    msg={'general.dicom.import_location':self.path})
-
-            # Since we have updated the search subfolders setting,
-            # update the setting in preferences
-            pub.sendMessage('preferences.updated.value',
-                msg={'general.dicom.import_search_subfolders':
-                 self.import_search_subfolders})
-
-            filearray = self.tcPatients.GetItemData(item)['filearray']
-            #self.btnSelect.Enable(False)
-            self.txtRxDose.Enable(False)
-            self.terminate = False
-            # threading.Thread(target=self.GetPatientData,
-            #     args=(self.path, filearray, self.txtRxDose.GetValue(),
-            #     self.SetThreadStatus, self.OnUpdateProgress)).start()
 
     def OnCancel(self, evt):
         """Stop the directory search and close the dialog."""
