@@ -16,7 +16,7 @@ requires = [
     'dicompyler-core>=0.5.2',
     'pydicom>=0.9.9',
     'wxPython>=4.0.0b2',
-    'utils_cw']
+    'utils-cw>=0.3']
 
 setup(
     name="pyDcmConverter",
@@ -29,7 +29,7 @@ setup(
     dependency_links = [
         'git+https://github.com/darcymason/pydicom.git#egg=pydicom-1.0.0',
         'git+https://github.com/dicompyler/dicompyler-core.git#egg=dicompyler-core-0.5.2',
-        'git+https://github.com/ChenglongWang/py_utils_cw.git#egg=utils_cw-0.3'],
+        'git+https://github.com/ChenglongWang/py_utils_cw.git#egg=utils-cw-0.3'],
     entry_points={'console_scripts':['dcm-cvt = pyDcmConverter.dicomgui:main']},
 
     # metadata for upload to PyPI
