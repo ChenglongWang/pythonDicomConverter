@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns="http://www.wxwidgets.org/wxxrc">
+  <object class="wxDialog" name="DicomImporterDialog" subclass="pyDcmConverter.dicomgui.DicomImporterDialog">
+    <title>pyDicomConverter</title>
+    <centered>1</centered>
+    <style>wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP</style>
+    <object class="wxBoxSizer">
+      <orient>wxVERTICAL</orient>
+      <object class="sizeritem" name="staticBoxSizer175">
+        <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+        <border>3</border>
+        <object class="wxStaticBoxSizer" name="staticBoxSizer175">
+          <sizeritem>
+            <object class="spacer"/>
+          </sizeritem>
+          <orient>wxVERTICAL</orient>
+          <label>DICOM Location</label>
+          <object class="sizeritem" name="boxSizer176">
+            <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="sizeritem">
+                <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+                <option>1</option>
+                <object class="wxTextCtrl" name="txtDicomImport">
+                  <style>wxTE_READONLY</style>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer178">
+                <size>5,0</size>
+                <flag/>
+              </object>
+              <object class="sizeritem">
+                <flag/>
+                <object class="wxButton" name="btnDicomImport">
+                  <label>&amp;Browse...</label>
+                  <style/>
+                  <bitmapposition>wxLEFT</bitmapposition>
+                  <default>0</default>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object class="spacer" name="Spacer180">
+            <size>0,5</size>
+            <flag/>
+          </object>
+          <object class="sizeritem" name="boxSizer181">
+            <flag/>
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="sizeritem">
+                <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+                <option>1</option>
+                <object class="wxCheckBox" name="checkSearchSubfolders">
+                  <style/>
+                  <label>Search within Subfolders</label>
+                  <checked>1</checked>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer69">
+                <flag>wxALL</flag>
+                <border>5</border>
+                <option>1</option>
+              </object>
+              <object class="sizeritem">
+                <flag>wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxButton" name="btn_rescan">
+                  <label>Scan</label>
+                  <style/>
+                  <size>60,25</size>
+                  <bitmapposition>wxLEFT</bitmapposition>
+                  <default>0</default>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object class="sizeritem" name="staticBoxSizer183">
+        <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+        <border>3</border>
+        <object class="wxStaticBoxSizer" name="staticBoxSizer183">
+          <sizeritem>
+            <object class="spacer"/>
+          </sizeritem>
+          <orient>wxVERTICAL</orient>
+          <label>Patients</label>
+          <object class="sizeritem" name="boxSizer184">
+            <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="spacer" name="Spacer185">
+                <size>2,0</size>
+                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+                <minsize>16,16</minsize>
+                <object class="wxStaticBitmap" name="bmpDirections">
+                  <bitmap>accept.png</bitmap>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer187">
+                <size>2,0</size>
+                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+              </object>
+              <object class="sizeritem" name="boxSizer188">
+                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+                <option>1</option>
+                <object class="wxBoxSizer">
+                  <orient>wxVERTICAL</orient>
+                  <object class="sizeritem">
+                    <flag>wxALIGN_LEFT</flag>
+                    <option>1</option>
+                    <object class="wxStaticText" name="lblDirections">
+                      <label> For best plugin compatibility, select a patient that has the following DICOM objects:</label>
+                      <style/>
+                    </object>
+                  </object>
+                  <object class="sizeritem">
+                    <flag>wxALIGN_LEFT</flag>
+                    <option>1</option>
+                    <object class="wxStaticText" name="lblDirections2">
+                      <label> - Image series, RT Structure Set, RT Plan and RT Dose with DVH:</label>
+                      <style/>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object class="spacer" name="Spacer191">
+            <size>0,5</size>
+            <flag/>
+          </object>
+          <object class="sizeritem">
+            <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+            <option>1</option>
+            <object class="wxTreeCtrl" name="tcPatients">
+              <style>wxTR_SINGLE|wxTR_LINES_AT_ROOT|wxTR_HAS_BUTTONS|wxBORDER_SUNKEN</style>
+              <size>455,300</size>
+            </object>
+          </object>
+          <object class="spacer" name="Spacer193">
+            <size>0,5</size>
+            <flag/>
+          </object>
+          <object class="sizeritem" name="boxSizer194">
+            <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER|wxALIGN_CENTER_VERTICAL</flag>
+                <object class="wxStaticText" name="lblProgressLabel">
+                  <label>Progress:\t</label>
+                  <style/>
+                  <font>
+                    <size>14</size>
+                    <style>normal</style>
+                    <weight>normal</weight>
+                    <family>swiss</family>
+                    <underlined>0</underlined>
+                    <face>Calibri</face>
+                  </font>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER|wxALIGN_CENTER_VERTICAL</flag>
+                <option>1</option>
+                <object class="wxStaticText" name="lblProgress">
+                  <label>n/a</label>
+                  <style/>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer197">
+                <size>5,0</size>
+                <flag/>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER|wxALIGN_CENTER_VERTICAL</flag>
+                <object class="wxGauge" name="gaugeProgress">
+                  <range>100</range>
+                  <value>75</value>
+                  <style>wxGA_SMOOTH|wxGA_HORIZONTAL</style>
+                  <size>100,15</size>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer199">
+                <size>5,0</size>
+                <flag/>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER</flag>
+                <object class="wxStaticText" name="lblProgressPercent">
+                  <label>100</label>
+                  <style>wxALIGN_RIGHT</style>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER</flag>
+                <object class="wxStaticText" name="lblProgressPercentSym">
+                  <label> %</label>
+                  <style/>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object class="spacer" name="Spacer202">
+            <size>0,5</size>
+            <flag/>
+          </object>
+          <object class="sizeritem" name="boxSizer203">
+            <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER</flag>
+                <object class="wxStaticBitmap" name="bmpRxDose">
+                  <bitmap>error.png</bitmap>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer205">
+                <size>5,0</size>
+                <flag/>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER</flag>
+                <object class="wxStaticText" name="lblRxDose">
+                  <label>Please verify the Rx dose before continuing:</label>
+                  <style/>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer207">
+                <size>5,0</size>
+                <flag/>
+                <option>1</option>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER</flag>
+                <object class="wxSpinCtrl" name="txtRxDose">
+                  <style>wxSP_ARROW_KEYS</style>
+                  <size>80,22</size>
+                  <value>1</value>
+                  <min>1</min>
+                  <max>99999</max>
+                </object>
+              </object>
+              <object class="spacer" name="Spacer209">
+                <size>5,0</size>
+                <flag/>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER</flag>
+                <object class="wxStaticText" name="lblRxDoseUnits">
+                  <label>cGy</label>
+                  <style/>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALIGN_CENTER</flag>
+                <object class="wxStaticText" name="lblSpacer">
+                  <label/>
+                  <style/>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object class="spacer" name="Spacer212">
+            <size>0,9</size>
+            <flag/>
+          </object>
+        </object>
+      </object>
+      <object class="sizeritem" name="staticBoxSizer2">
+        <flag>wxALL|wxEXPAND</flag>
+        <border>5</border>
+        <option>1</option>
+        <object class="wxStaticBoxSizer" name="staticBoxSizer2">
+          <sizeritem>
+            <object class="spacer"/>
+          </sizeritem>
+          <orient>wxVERTICAL</orient>
+          <label>Convert Options</label>
+          <object class="sizeritem" name="boxSizer20">
+            <flag>wxLEFT|wxRIGHT|wxEXPAND</flag>
+            <border>5</border>
+            <option>1</option>
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="sizeritem">
+                <flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxCheckBox" name="check_volume">
+                  <style/>
+                  <label>Volume</label>
+                  <checked>1</checked>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxStaticText" name="m_staticText6">
+                  <label>MinSlices:</label>
+                  <style/>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxRIGHT|wxTOP|wxBOTTOM|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxSpinCtrl" name="spin_minslices">
+                  <style>wxSP_ARROW_KEYS</style>
+                  <size>50,20</size>
+                  <value>50</value>
+                  <min>1</min>
+                  <max>1000</max>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxStaticText" name="m_staticText38">
+                  <label>Offset:</label>
+                  <style/>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxRIGHT|wxTOP|wxBOTTOM|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxSpinCtrl" name="spin_offset">
+                  <style>wxSP_ARROW_KEYS</style>
+                  <size>60,20</size>
+                  <value>2048</value>
+                  <min>-10000</min>
+                  <max>10000</max>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxLEFT|wxTOP|wxBOTTOM|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxCheckBox" name="check_mori">
+                  <style/>
+                  <label>MoriFormat</label>
+                  <checked>1</checked>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxCheckBox" name="check_nifti">
+                  <style/>
+                  <label>NiiFormat</label>
+                  <checked>1</checked>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object class="sizeritem" name="boxSizer26">
+            <flag>wxEXPAND|wxALIGN_CENTER_VERTICAL</flag>
+            <border>5</border>
+            <option>1</option>
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="sizeritem">
+                <flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxStaticText" name="m_staticText30">
+                  <label>Output dir:</label>
+                  <style/>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <option>1</option>
+                <object class="wxDirPickerCtrl" name="picker_output">
+                  <style>wxDIRP_SMALL|wxDIRP_DEFAULT_STYLE</style>
+                  <size>-1,20</size>
+                  <message>Select a folder</message>
+                  <value/>
+                </object>
+              </object>
+              <object class="sizeritem">
+                <flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+                <border>5</border>
+                <object class="wxTextCtrl" name="text_output_name">
+                  <style/>
+                  <size>120,22</size>
+                  <hint>
+                    <![CDATA[Output name]]>
+                  </hint>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object class="sizeritem" name="boxSizer55">
+        <flag>wxALIGN_CENTER_HORIZONTAL</flag>
+        <border>1</border>
+        <object class="wxBoxSizer">
+          <orient>wxHORIZONTAL</orient>
+          <object class="sizeritem">
+            <flag>wxRIGHT|wxBOTTOM|wxALIGN_TOP</flag>
+            <border>5</border>
+            <object class="wxButton" name="btn_convert">
+              <label>Convert</label>
+              <style/>
+              <bitmapposition>wxLEFT</bitmapposition>
+              <default>1</default>
+            </object>
+          </object>
+          <object class="sizeritem">
+            <flag>wxLEFT|wxBOTTOM</flag>
+            <border>5</border>
+            <object class="wxButton" name="btn_pause">
+              <label>Stop</label>
+              <style/>
+              <bitmapposition>wxLEFT</bitmapposition>
+              <default>0</default>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</resource>
