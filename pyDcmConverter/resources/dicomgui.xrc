@@ -8,7 +8,7 @@
       <orient>wxVERTICAL</orient>
       <object class="sizeritem" name="staticBoxSizer175">
         <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
-        <border>3</border>
+        <border>2</border>
         <object class="wxStaticBoxSizer" name="staticBoxSizer175">
           <sizeritem>
             <object class="spacer"/>
@@ -87,50 +87,6 @@
           </sizeritem>
           <orient>wxVERTICAL</orient>
           <label>Patients</label>
-          <object class="sizeritem" name="boxSizer184">
-            <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
-            <object class="wxBoxSizer">
-              <orient>wxHORIZONTAL</orient>
-              <object class="spacer" name="Spacer185">
-                <size>2,0</size>
-                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
-              </object>
-              <object class="sizeritem">
-                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
-                <minsize>16,16</minsize>
-                <object class="wxStaticBitmap" name="bmpDirections">
-                  <bitmap>accept.png</bitmap>
-                </object>
-              </object>
-              <object class="spacer" name="Spacer187">
-                <size>2,0</size>
-                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
-              </object>
-              <object class="sizeritem" name="boxSizer188">
-                <flag>wxALL|wxEXPAND|wxALIGN_CENTER</flag>
-                <option>1</option>
-                <object class="wxBoxSizer">
-                  <orient>wxVERTICAL</orient>
-                  <object class="sizeritem">
-                    <flag>wxALIGN_LEFT</flag>
-                    <option>1</option>
-                    <object class="wxStaticText" name="lblDirections">
-                      <label> For best plugin compatibility, select a patient that has the following DICOM objects:</label>
-                      <style/>
-                    </object>
-                  </object>
-                  <object class="sizeritem">
-                    <flag>wxALIGN_LEFT</flag>
-                    <option>1</option>
-                    <object class="wxStaticText" name="lblDirections2">
-                      <label> - Image series, RT Structure Set, RT Plan and RT Dose with DVH:</label>
-                      <style/>
-                    </object>
-                  </object>
-                </object>
-              </object>
-            </object>
-          </object>
           <object class="spacer" name="Spacer191">
             <size>0,5</size>
             <flag/>
@@ -341,7 +297,7 @@
                 <border>5</border>
                 <object class="wxCheckBox" name="check_mori">
                   <style/>
-                  <label>MoriFormat</label>
+                  <label>RawFormat</label>
                   <checked>1</checked>
                 </object>
               </object>

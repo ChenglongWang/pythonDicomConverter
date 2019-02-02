@@ -11,13 +11,16 @@
 #
 # It's assumed that the reference (prescription) dose is in cGy.
 
-import hashlib, os, threading, functools, json, logging
-logger = logging.getLogger('DcmConverter')
+import hashlib, os, threading, functools, json, warnings
+from logging import getLogger, DEBUG, INFO
+logger = getLogger('DcmConverter')
 import wx
+warnings.filterwarnings("ignore", category=wx.wxPyDeprecationWarning)
 from wx.xrc import *
 import numpy as np
 from dicompylercore import dicomparser
 from pyDcmConverter import guiutil, util
+
 
 class DcmConverterApp(wx.App):
     """Prepare to show the dialog that will Import DICOM and DICOM RT files."""
@@ -71,8 +74,6 @@ class DicomImporterDialog(wx.Dialog):
         self.btnDicomImport = XRCCTRL(self, 'btnDicomImport')
         self.btnPause = XRCCTRL(self, 'btn_pause')
         self.checkSearchSubfolders = XRCCTRL(self, 'checkSearchSubfolders')
-        self.lblDirections = XRCCTRL(self, 'lblDirections')
-        self.lblDirections2 = XRCCTRL(self, 'lblDirections2')
         self.lblProgressLabel = XRCCTRL(self, 'lblProgressLabel')
         self.lblProgress = XRCCTRL(self, 'lblProgress')
         self.gaugeProgress = XRCCTRL(self, 'gaugeProgress')
@@ -83,7 +84,6 @@ class DicomImporterDialog(wx.Dialog):
         self.lblRxDose = XRCCTRL(self, 'lblRxDose')
         self.txtRxDose = XRCCTRL(self, 'txtRxDose')
         self.lblRxDoseUnits = XRCCTRL(self, 'lblRxDoseUnits')
-        #self.btnSelect = XRCCTRL(self, 'wxID_OK')
 
         # Bind interface events to the proper methods
         self.Bind(wx.EVT_BUTTON, self.OnBrowseDicomImport, id=XRCID('btnDicomImport'))
@@ -140,8 +140,6 @@ class DicomImporterDialog(wx.Dialog):
             self.txtDicomImport.SetFont(font)
             self.btnDicomImport.SetFont(font)
             self.checkSearchSubfolders.SetFont(font)
-            self.lblDirections.SetFont(font)
-            self.lblDirections2.SetFont(font)
             self.lblProgressLabel.SetFont(font)
             self.lblProgress.SetFont(font)
             self.lblProgressPercent.SetFont(font)
@@ -150,7 +148,6 @@ class DicomImporterDialog(wx.Dialog):
             self.txtRxDose.SetFont(font)
             self.lblRxDoseUnits.SetFont(font)
         font.SetWeight(wx.FONTWEIGHT_BOLD)
-        self.lblDirections2.SetFont(font)
         self.lblRxDose.SetFont(font)
 
         # Initialize the patients tree control
@@ -293,7 +290,7 @@ class DicomImporterDialog(wx.Dialog):
             header_name = write_mori(image_array, reso, mori_fname, True)
             with open(header_name, 'r') as f:
                 origin_header_lines = f.read().splitlines()       
-            with open(header_name,'w') as f:
+            with open(header_name, 'w') as f:
                 for field in origin_header_lines: # \r\n
                     if 'Thickness' in field:
                         f.write('{} {:.6f}\r'.format(field,reso[2]))
@@ -327,6 +324,7 @@ class DicomImporterDialog(wx.Dialog):
                         pass
                     else:
                         f.write('{} \r'.format(field))
+            
             wx.CallAfter(progressFunc, 97, 100, 'Export RAW image completed')
 
         if self.export_nii_format:
